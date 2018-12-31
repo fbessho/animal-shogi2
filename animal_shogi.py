@@ -1,6 +1,7 @@
 from collections import namedtuple
 from enum import Enum, auto
 import logging
+import sys
 
 logger = logging.getLogger(__name__)
 
@@ -117,7 +118,7 @@ def possible_moves(board, turn):
             # out of bound
             if not (0 <= new_x <= 2):
                 continue
-            if not (0 <= new_y <= 2):
+            if not (0 <= new_y <= 3):
                 continue
             # filled with my koma
             new = coord_to_name(new_x, new_y)
@@ -150,25 +151,25 @@ def get_new_board(board, move):
     return new_board
 
 
-def print_board(board):
+def print_board(board, file=None):
     white_mochigoma = [ACRONYMS[p.koma] for p in board if p.bw == 'w' and p.position == 'mochigoma']
     black_mochigoma = [ACRONYMS[p.koma] for p in board if p.bw == 'b' and p.position == 'mochigoma']
 
     # 'a3' -> Position()
     board_dict = {p.position: p for p in board}
 
-    print(*white_mochigoma, sep=',')
-    print()
+    print(*white_mochigoma, sep=',', file=file)
+    print(file=file)
     for y in range(4):
         for x in range(3):
             pos = coord_to_name(x, y)
             if pos in board_dict:
-                print(get_pos_short_name(board_dict[pos]), end='')
+                print(get_pos_short_name(board_dict[pos]), end='', file=file)
             else:
-                print('..', end='')
-        print()
-    print()
-    print(*black_mochigoma, sep=',')
+                print('..', end='', file=file)
+        print(file=file)
+    print(file=file)
+    print(*black_mochigoma, sep=',', file=file)
 
 
 def evaluate(board, turn, depth=3):
@@ -195,7 +196,11 @@ def evaluate(board, turn, depth=3):
         next_turn = 'w' if turn == 'b' else 'b'
         sign = -1 if turn == 'w' else 1  # reverse sign if white
         point, path = evaluate(next_board, next_turn, depth=depth-1)
-        if best_point is None or (sign * point) > (sign * best_point):
+        if (
+                (best_point is None)  # first evaluation
+                or (sign * point) > (sign * best_point)  # found a better path
+                or ((point == best_point) and (len(path)+1) > len(best_path))  # a longer path with the same point
+        ):
             best_point = point
             best_path = [move_to_str(m)] + path
     return best_point, best_path
@@ -215,8 +220,8 @@ if __name__ == '__main__':
         Position('w', 'a1', Koma.GIRAFFE),
         Position('w', 'b2', Koma.HIYOKO),
     ]
-    print_board(board)
-    print(evaluate(board, 'b', depth=4))
+    print_board(board, file=sys.stderr)
+    print(evaluate(board, 'b', depth=5))
     #
     # board = get_new_board(board, Move('b', Koma.ELEPHANT, 'b3', 'c2'))
     # print_board(board)
