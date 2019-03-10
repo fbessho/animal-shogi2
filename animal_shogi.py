@@ -1,12 +1,18 @@
 from collections import namedtuple
 from enum import Enum, auto
 import logging
-import sys
 
 logger = logging.getLogger(__name__)
 
-Move = namedtuple('Move', 'bw, koma, orig, new')
 Position = namedtuple('Position', 'bw, position, koma')
+
+
+class Move:
+    def __init__(self, bw, koma, orig, new):
+        self.bw = bw  # str: Turn ('b'lack or 'w'hite)
+        self.koma = koma  # a Koma instance
+        self.orig = orig  # Original position (e.g. 'a4', 'mochigoma')
+        self.new = new  # Original position (e.g. 'a4', 'mochigoma')
 
 
 class Koma(Enum):
@@ -130,6 +136,41 @@ def possible_moves(board, turn):
     return tmp
 
 
+def is_valid_move(board, move):
+    """Check if `move` is a valid move on the `board`
+
+    :return: (is_valid, reason)
+        is_valid is a boolean
+        reason is a string
+    """
+    # Koma exists in the original position?
+    existing_komas = [pos for pos in board if (pos.bw == move.bw) and (pos.position == move.orig) and (pos.koma == move.koma)]
+    if not existing_komas:
+        return False, f'Koma does not exit in the original position [{move.orig}]'
+
+    # Ensure that there's no koma owned by the player at the new position
+    my_komas_in_the_new_position = [pos for pos in board if (pos.bw == move.bw) and (pos.position == move.new)]
+    if my_komas_in_the_new_position:
+        return False, f'Your Koma exists in the new position [{move.new}]'
+
+    # Is the new position valid?
+    valid_new_positions = [x + y for x in 'abc' for y in '1234']
+    if move.new not in valid_new_positions:
+        return False, f'Invalid position name [{move.new}]'
+
+    # Could the koma move from orig to new?
+    if move.orig != 'mochigoma':
+        orig_x, orig_y = name_to_coord(move.orig)
+        new_x, new_y = name_to_coord(move.new)
+        actual_move = (new_x - orig_x, new_y - orig_y)
+        valid_moves = MOVES[move.koma]
+        if actual_move not in valid_moves:
+            return False, f'Invalid movement ({move.koma} cannot move from {move.orig} to {move.new}.'
+
+    # All checks passed!
+    return True, ''
+
+
 def get_new_board(board, move):
     # process mochigoma first
     tmp = []
@@ -142,9 +183,10 @@ def get_new_board(board, move):
     new_board = []
     moved = False
     for p in tmp:
-        if (not moved) and (p.bw == move.bw) and (p.position == move.orig):
+        if (not moved) and (p.bw == move.bw) and (p.position == move.orig) and (p.koma == move.koma):
             new_pos = Position(move.bw, move.new, move.koma)
             new_board.append(new_pos)
+            moved = True
         else:
             new_board.append(p)
 
@@ -173,6 +215,13 @@ def print_board(board, file=None):
 
 
 def evaluate(board, turn, depth=3):
+    """
+
+    :param board:
+    :param turn: 'b' or 'w'
+    :param depth:
+    :return: (score, best_path)
+    """
     lion_mochigoma = [p for p in board if p.position == 'mochigoma' and p.koma == Koma.LION]
     if lion_mochigoma:
         if lion_mochigoma[0].bw == 'b':
@@ -202,43 +251,5 @@ def evaluate(board, turn, depth=3):
                 or ((point == best_point) and (len(path)+1) > len(best_path))  # a longer path with the same point
         ):
             best_point = point
-            best_path = [move_to_str(m)] + path
+            best_path = [m] + path
     return best_point, best_path
-
-
-if __name__ == '__main__':
-
-    logging.basicConfig(level='DEBUG')
-
-    board = [
-        Position('b', 'b4', Koma.LION),
-        Position('b', 'b3', Koma.ELEPHANT),
-        Position('b', 'c3', Koma.GIRAFFE),
-        Position('b', 'mochigoma', Koma.HIYOKO),
-        Position('w', 'b1', Koma.LION),
-        Position('w', 'c1', Koma.ELEPHANT),
-        Position('w', 'a1', Koma.GIRAFFE),
-        Position('w', 'b2', Koma.HIYOKO),
-    ]
-    print_board(board, file=sys.stderr)
-    print(evaluate(board, 'b', depth=5))
-    #
-    # board = get_new_board(board, Move('b', Koma.ELEPHANT, 'b3', 'c2'))
-    # print_board(board)
-    # print(evaluate(board, 'w', depth=4))
-    #
-    # board = get_new_board(board, Move('w', Koma.LION, 'b1', 'a2'))
-    # print_board(board)
-    # print(evaluate(board, 'b', depth=3))
-    #
-    # board = get_new_board(board, Move('b', Koma.HIYOKO, 'mochigoma', 'a3'))
-    # print_board(board)
-    # print(evaluate(board, 'w', depth=2))
-    #
-    # board = get_new_board(board, Move('w', Koma.HIYOKO, 'b2', 'b3'))
-    # print_board(board)
-    # print(evaluate(board, 'b', depth=1))
-    #
-    # # board = get_new_board(board, Move('b', Koma.HIYOKO, 'a3', 'a2'))
-    # #print_board(board)
-    # # print(evaluate(board, 'w', depth=0))
