@@ -1,0 +1,383 @@
+/Users/besshf/anaconda3/bin/python3.6 /Users/besshf/src/animal-shogi2/main.py
+
+
+vGvLvE
+..vH..
+..^H..
+^E^L^G
+
+
+Input your move
+Original position [a1, mochigoma, m]:c4
+New position:c3
+Koma [LION, ELEPHANT, GIRAFFE, HIYOKO, CHICKEN]:GIRAFFE
+
+Your move: ▲c3 GIRAFFE (c4)
+
+
+vGvLvE
+..vH..
+..^H^G
+^E^L..
+
+
+
+Score: 0
+Their move: △a2 LION (b1)
+
+
+vG..vE
+vLvH..
+..^H^G
+^E^L..
+
+
+Input your move
+Original position [a1, mochigoma, m]:b3
+New position:b2
+Koma [LION, ELEPHANT, GIRAFFE, HIYOKO, CHICKEN]:HIYOKO
+
+Your move: ▲b2 HIYOKO (b3)
+
+
+vG..vE
+vL^H..
+....^G
+^E^L..
+
+H
+
+Score: 0
+Their move: △b2 LION (a2)
+H
+
+vG..vE
+..vL..
+....^G
+^E^L..
+
+H
+Input your move
+Original position [a1, mochigoma, m]:a4
+New position:b3
+Koma [LION, ELEPHANT, GIRAFFE, HIYOKO, CHICKEN]:ELEPHANT
+
+Your move: ▲b3 ELEPHANT (a4)
+H
+
+vG..vE
+..vL..
+..^E^G
+..^L..
+
+H
+
+Score: 0
+Their move: △a2 HIYOKO (mochigoma)
+
+
+vG..vE
+vHvL..
+..^E^G
+..^L..
+
+H
+Input your move
+Original position [a1, mochigoma, m]:b3
+New position:c2
+Koma [LION, ELEPHANT, GIRAFFE, HIYOKO, CHICKEN]:ELEPHANT
+
+Your move: ▲c2 ELEPHANT (b3)
+
+
+vG..vE
+vHvL^E
+....^G
+..^L..
+
+H
+
+Score: -2
+Their move: △a3 HIYOKO (a2)
+
+
+vG..vE
+..vL^E
+vH..^G
+..^L..
+
+H
+Input your move
+Original position [a1, mochigoma, m]:c2
+New position:b3
+Koma [LION, ELEPHANT, GIRAFFE, HIYOKO, CHICKEN]:GIRAFFE
+Invalid movement: Koma does not exit in the original position [c2]
+Original position [a1, mochigoma, m]:c2
+New position:b3
+Koma [LION, ELEPHANT, GIRAFFE, HIYOKO, CHICKEN]:ELEPHANT
+
+Your move: ▲b3 ELEPHANT (c2)
+
+
+vG..vE
+..vL..
+vH^E^G
+..^L..
+
+H
+
+Score: 0
+Their move: △b1 LION (b2)
+
+
+vGvLvE
+......
+vH^E^G
+..^L..
+
+H
+Input your move
+Original position [a1, mochigoma, m]:b4
+New position:a3
+Koma [LION, ELEPHANT, GIRAFFE, HIYOKO, CHICKEN]:LION
+
+Your move: ▲a3 LION (b4)
+
+
+vGvLvE
+......
+^L^E^G
+......
+
+H,H
+
+Score: 0
+Their move: △b2 ELEPHANT (c1)
+
+
+vGvL..
+..vE..
+^L^E^G
+......
+
+H,H
+Input your move
+Original position [a1, mochigoma, m]:a3
+New position:b4
+Koma [LION, ELEPHANT, GIRAFFE, HIYOKO, CHICKEN]:LION
+
+Your move: ▲b4 LION (a3)
+
+
+vGvL..
+..vE..
+..^E^G
+..^L..
+
+H,H
+
+Score: 0
+Their move: △c3 ELEPHANT (b2)
+G
+
+vGvL..
+......
+..^EvE
+..^L..
+
+H,H
+Input your move
+Original position [a1, mochigoma, m]:b4
+New position:c3
+Koma [LION, ELEPHANT, GIRAFFE, HIYOKO, CHICKEN]:LION
+
+Your move: ▲c3 LION (b4)
+G
+
+vGvL..
+......
+..^E^L
+......
+
+H,E,H
+
+Score: 8
+Their move: △b2 GIRAFFE (mochigoma)
+
+
+vGvL..
+..vG..
+..^E^L
+......
+
+H,E,H
+Input your move
+Original position [a1, mochigoma, m]:m
+New position:c2
+Koma [LION, ELEPHANT, GIRAFFE, HIYOKO, CHICKEN]:ELEPHANT
+
+Your move: ▲c2 ELEPHANT (mochigoma)
+
+
+vGvL..
+..vG^E
+..^E^L
+......
+
+H,H
+
+Score: -8
+Their move: △c1 LION (b1)
+
+
+vG..vL
+..vG^E
+..^E^L
+......
+
+H,H
+Input your move
+Original position [a1, mochigoma, m]:m
+New position:a4
+Koma [LION, ELEPHANT, GIRAFFE, HIYOKO, CHICKEN]:HIYOKO
+
+Your move: ▲a4 HIYOKO (mochigoma)
+
+
+vG..vL
+..vG^E
+..^E^L
+^H....
+
+H
+
+Score: -8
+Their move: △c2 GIRAFFE (b2)
+E
+
+vG..vL
+....vG
+..^E^L
+^H....
+
+H
+Input your move
+Original position [a1, mochigoma, m]:b3
+New position:c2
+Koma [LION, ELEPHANT, GIRAFFE, HIYOKO, CHICKEN]:ELEPHANT
+
+Your move: ▲c2 ELEPHANT (b3)
+E
+
+vG..vL
+....^E
+....^L
+^H....
+
+G,H
+
+Score: 2
+Their move: △a2 ELEPHANT (mochigoma)
+
+
+vG..vL
+vE..^E
+....^L
+^H....
+
+G,H
+Input your move
+Original position [a1, mochigoma, m]:a4
+New position:a3
+Koma [LION, ELEPHANT, GIRAFFE, HIYOKO, CHICKEN]:HIYOKO
+
+Your move: ▲a3 HIYOKO (a4)
+
+
+vG..vL
+vE..^E
+^H..^L
+......
+
+G,H
+
+Score: 2
+Their move: △b1 ELEPHANT (a2)
+
+
+vGvEvL
+....^E
+^H..^L
+......
+
+G,H
+Input your move
+Original position [a1, mochigoma, m]:c2
+New position:b1
+Koma [LION, ELEPHANT, GIRAFFE, HIYOKO, CHICKEN]:ELEPHANT
+
+Your move: ▲b1 ELEPHANT (c2)
+
+
+vG^EvL
+......
+^H..^L
+......
+
+G,E,H
+
+Score: 2
+Their move: △b1 LION (c1)
+E
+
+vGvL..
+......
+^H..^L
+......
+
+G,E,H
+Input your move
+Original position [a1, mochigoma, m]:m
+New position:b2
+Koma [LION, ELEPHANT, GIRAFFE, HIYOKO, CHICKEN]:HIYOKO
+
+Your move: ▲b2 HIYOKO (mochigoma)
+E
+
+vGvL..
+..^H..
+^H..^L
+......
+
+G,E
+
+Score: 9999
+Their move: △a2 ELEPHANT (mochigoma)
+
+
+vGvL..
+vE^H..
+^H..^L
+......
+
+G,E
+Input your move
+Original position [a1, mochigoma, m]:b2
+New position:b1
+Koma [LION, ELEPHANT, GIRAFFE, HIYOKO, CHICKEN]:HIYOKO
+
+Traceback (most recent call last):
+Your move: ▲b1 HIYOKO (b2)
+  File "/Users/besshf/src/animal-shogi2/main.py", line 51, in <module>
+
+    their_move = path[0]
+
+IndexError: list index out of range
+vG^H..
+vE....
+^H..^L
+......
+
+G,E,L
+
+Process finished with exit code 1

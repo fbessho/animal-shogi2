@@ -1,0 +1,44 @@
+Your move: ▲c3 GIRAFFE (c4)
+Score: 0
+Their move: △a2 LION (b1)
+Your move: ▲b2 HIYOKO (b3)
+Score: 0
+Their move: △b2 LION (a2)
+Your move: ▲b3 ELEPHANT (a4)
+Score: 0
+Their move: △a2 HIYOKO (mochigoma)
+Your move: ▲c2 ELEPHANT (b3)
+Score: -2
+Their move: △a3 HIYOKO (a2)
+Invalid movement: Koma does not exit in the original position [c2]
+Your move: ▲b3 ELEPHANT (c2)
+Score: 0
+Their move: △b1 LION (b2)
+Your move: ▲a3 LION (b4)
+Score: 0
+Their move: △b2 ELEPHANT (c1)
+Your move: ▲b4 LION (a3)
+Score: 0
+Their move: △c3 ELEPHANT (b2)
+Your move: ▲c3 LION (b4)
+Score: 8
+Their move: △b2 GIRAFFE (mochigoma)
+Your move: ▲c2 ELEPHANT (mochigoma)
+Score: -8
+Their move: △c1 LION (b1)
+Your move: ▲a4 HIYOKO (mochigoma)
+Score: -8
+Their move: △c2 GIRAFFE (b2)
+Your move: ▲c2 ELEPHANT (b3)
+Score: 2
+Their move: △a2 ELEPHANT (mochigoma)
+Your move: ▲a3 HIYOKO (a4)
+Score: 2
+Their move: △b1 ELEPHANT (a2)
+Your move: ▲b1 ELEPHANT (c2)
+Score: 2
+Their move: △b1 LION (c1)
+Your move: ▲b2 HIYOKO (mochigoma)
+Score: 9999
+Their move: △a2 ELEPHANT (mochigoma)
+Your move: ▲b1 HIYOKO (b2)
